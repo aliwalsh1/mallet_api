@@ -47,7 +47,6 @@ class Users extends REST_Controller
     public function index_put()
     {
         if (!$this->put('user')) {
-            echo("first");
             $this->response(null, 400);
 
         }
@@ -59,7 +58,6 @@ class Users extends REST_Controller
         if (!is_null($update)) {
             $this->response(array('response' => 'user made!'), 200);
         } else {
-            echo("second");
             $this->response(array('error', 'something has happened to the server'), 400);
 
         }
