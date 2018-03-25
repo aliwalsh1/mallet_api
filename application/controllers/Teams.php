@@ -47,7 +47,6 @@ class Teams extends REST_Controller
     public function index_put()
     {
         if (!$this->put('team')) {
-            echo("first");
             $this->response(null, 400);
 
         }
@@ -58,7 +57,6 @@ class Teams extends REST_Controller
         if (!is_null($update)) {
             $this->response(array('response' => 'team made!'), 200);
         } else {
-            echo("second");
             $this->response(array('error', 'something has happened to the server'), 400);
 
         }

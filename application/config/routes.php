@@ -51,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
+
+//***********for some reason, not all of these are needed******************
+
+
 //Routes for messages
 $route['messages']['get'] = 'messages/index';
 $route['messages/(:num)']['get'] = 'messages/find/$1';

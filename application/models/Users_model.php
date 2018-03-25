@@ -71,7 +71,8 @@ class Users_model extends CI_Model
             'ip' => $user['ip'],
             'currentPlayer' => $user['currentPlayer'],
             '_password' => $user['_password'],
-            'teamIDs' => $user['teamIDs']
+            'teamIDs' => $user['teamIDs'],
+            'valid' => 0 //$user['valid']  when does this change value
         );
     }
 }

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Results_model extends CI_Model
+class Leagues_model extends CI_Model
 {
     public function __construct()
     {
@@ -13,13 +13,13 @@ class Results_model extends CI_Model
     public function get($id = null)
     {
         if (!is_null($id)) {
-            $query = $this->db->select('*')->from('results')->where('id', $id)->get();
+            $query = $this->db->select('*')->from('leagues')->where('id', $id)->get();
             if ($query->num_rows() === 1) {
                 return $query->row_array();
             }
             return null;
         }
-        $query = $this->db->select('*')->from('results')->get();
+        $query = $this->db->select('*')->from('leagues')->get();
         if ($query->num_rows() > 0) {
             return $query->result_array();
         }
@@ -27,9 +27,9 @@ class Results_model extends CI_Model
     }
 
 
-    public function save($result)
+    public function save($league)
     {
-        $this->db->set($this->_setResult($result))->insert('results');
+        $this->db->set($this->_setLeague($league))->insert('leagues');
         if ($this->db->affected_rows() === 1) {
             return $this->db->insert_id();
         }
@@ -37,10 +37,10 @@ class Results_model extends CI_Model
         return null;
     }
 
-    public function update($result)
+    public function update($league)
     {
-        $id = $result['id'];
-        $this->db->set($this->_setResult($result))->where('id', $id)->update('results');
+        $id = $league['id'];
+        $this->db->set($this->_setLeague($league))->where('id', $id)->update('leagues');
         if ($this->db->affected_rows() === 1) { //id wasnt matching anything in table, so affected rows = 0
             return true;
         }
@@ -50,22 +50,17 @@ class Results_model extends CI_Model
 
     public function delete($id)
     {
-        $this->db->where('id', $id)->delete('results');
+        $this->db->where('id', $id)->delete('leagues');
         if ($this->db->affected_rows() === 1) {
             return true;
         }
         return null;
     }
 
-
-
-    private function _setResult($result)
+    private function _setLeague($league)
     {
         return array(
-            'firstTeamID' => $result['firstTeamID'],
-            'secondTeamID' => $result['secondTeamID'],
-            'firstTeamResult' => $result['firstTeamResult'],
-            'secondTeamResult' => $result['secondTeamResult']
+            'leagueName' => $league['leagueName']
         );
     }
 }

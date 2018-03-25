@@ -63,7 +63,7 @@ class Messages_model extends CI_Model
     {
         return array(
             'senderID' => $message['senderID'],
-            'recipientID' => null,
+            'recipientID' => $message['recipientID'],
             'subject' => $message['subject'],
             'body' => $message['body'],
             'uploadID' => null,
