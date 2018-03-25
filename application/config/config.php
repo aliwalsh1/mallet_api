@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8888/sundayapi2/';
+$config['base_url'] = 'http://localhost:8888/malletapi/';
 
 /*
 |--------------------------------------------------------------------------
@@ -480,3 +480,4 @@ $config['time_reference'] = 'local';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['sess_save_path'] = sys_get_temp_dir();
